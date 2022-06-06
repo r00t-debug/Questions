@@ -1,0 +1,69 @@
+import { useState, useEffect } from "react"
+import axios from "axios"
+import Questions from "../components/Questions"
+import RadarChart from '../components/RadarChart'
+
+
+function Domaine({ arr, domaine, title }) {
+  const[array, setArray] = useState(arr)
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get(`/api/questions/${domaine}`)
+        let temp = array.slice()
+
+        temp.map((item, index) => {
+          item.value = response.data[index].score          
+        })
+
+        setArray(temp)
+      } catch(err) {
+        console.log(err)
+      }
+    }
+
+    fetchPosts()
+  }, [])
+
+  // Check for min and max on input
+  function minmax(value, min, max)
+  {
+    if (parseInt(value) < min || isNaN(parseInt(value)))
+      return min
+    else if (parseInt(value) > max)
+      return max
+    else return value
+  }
+  
+
+  const updateItem = (id, whichvalue, newvalue) => {
+    if (id !== -1) {
+      let temporaryarray = array.slice();
+      temporaryarray[id][whichvalue] = parseInt(newvalue);
+      setArray(temporaryarray);
+    } else {
+      console.log('no match');
+    }
+  }
+  
+  const handleInput = (e) => {
+    let name = e.target.name;
+    const value = minmax(e.target.value, 0, 5)
+
+    e.target.value = value
+    updateItem(name,'value', value)
+
+    name++
+    const payload = { question: name, score: value }
+    axios.put(`/api/questions/${domaine}`, payload)
+  }
+
+  return (
+    <>
+    <Questions title={title} arr={array} onInput={handleInput} />
+    <RadarChart arr={array} />
+    </>
+  )
+}
+export default Domaine
