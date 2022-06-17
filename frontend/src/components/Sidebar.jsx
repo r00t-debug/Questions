@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom'
 import '../App.css'
 import { SidebarData } from './SidebarData'
 import {FcMindMap} from 'react-icons/fc'
+import {AiOutlineAudit} from 'react-icons/ai'
+import {RiDashboard2Fill} from 'react-icons/ri'
 
 function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -30,6 +32,17 @@ function Sidebar() {
         </h1>
       </div>
       <ul className="mt-6 pr-3 overflow-auto h-[calc(100vh-96px)] scrollbar">
+      <Link to={"/"}
+          className='text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 hover:bg-light-white rounded-md'
+        >
+          <div className="text-xl">
+            <RiDashboard2Fill />
+          </div>
+          <span className={`${!open && 'hidden'} origin-left duration-200`}>Dashboard</span>
+        </Link>
+
+        <div className='border-t border-slate-400'></div>
+
         {SidebarData.map((val, index) => (
           <Link key={index} to={val.link}
             className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 hover:bg-light-white rounded-md`}
@@ -40,6 +53,17 @@ function Sidebar() {
             <span className={`${!open && 'hidden'} origin-left duration-200`}>{val.title}</span>
           </Link>
         ))}
+
+        <div className='border-t border-slate-400'></div>
+
+        <Link to={"/pdf"}
+          className='text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 hover:bg-light-white rounded-md'
+        >
+          <div className="text-xl">
+            <AiOutlineAudit />
+          </div>
+          <span className={`${!open && 'hidden'} origin-left duration-200`}>Rapport d'Audit</span>
+        </Link>
       </ul>
     </div>
   )

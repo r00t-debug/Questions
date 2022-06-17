@@ -17,18 +17,12 @@ import {
 
 import {
   RiMoneyDollarCircleFill,
-  RiDashboard2Fill,
   RiShieldKeyholeFill
 } from 'react-icons/ri'
 
 import { BiCctv } from 'react-icons/bi'
 
 export const SidebarData = [
-  {
-    title: "Dashboard",
-    icon: <RiDashboard2Fill />,
-    link: "/"
-  },
   {
     title: "Gestion des actifs",
     icon: <RiMoneyDollarCircleFill />,

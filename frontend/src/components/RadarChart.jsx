@@ -23,12 +23,14 @@ function RadarChart({arr}) {
   // const text = Object.keys(arr).map(key => {
   //   return arr[key].text
   // })
-  const name = Object.keys(arr).map(key => {
-    return arr[key].name + 1
+  const filteredArr = arr.filter((e) => e.value !== -1)
+  const name = Object.keys(filteredArr).map(key => {
+    return filteredArr[key].name + 1
   })
-  const value = Object.keys(arr).map(key => {
-    return arr[key].value
+  const value = Object.keys(filteredArr).map(key => {
+    return filteredArr[key].value
   })
+
 
   const data = {
     labels: name,
@@ -78,17 +80,17 @@ function RadarChart({arr}) {
   }
 
   const scale = [
-    {text: "nothing", score: 0, color: "text-red-800"},
-    {text: "bad", score: 1, color: "text-rose-600"},
-    {text: "not bad", score: 2, color: "text-orange-600"},
-    {text: "average", score: 3, color: "text-amber-600"},
-    {text: "good", score: 4, color: "text-green-600"},
-    {text: "excellent", score: 5, color: "text-emerald-700"},
+    {text: "Aucun", score: 0, color: "text-red-800"},
+    {text: "Initial", score: 1, color: "text-rose-600"},
+    {text: "Reproductible", score: 2, color: "text-orange-600"},
+    {text: "Défini", score: 3, color: "text-amber-600"},
+    {text: "Maîtrisé", score: 4, color: "text-green-600"},
+    {text: "Optimisé", score: 5, color: "text-emerald-700"},
   ]
 
   return (
     <div className="font-semibold px-4 border-l-[1px] border-slate-200 flex flex-col justify-center items-center">
-      <ul className="w-5/6 flex justify-between mb-2">
+      <ul className="w-11/12 flex justify-between mb-2">
         {scale.map((item, index) => (
           <li key={index}>
             <p className={`text-center ${item.color}`}>{item.score} {item.text}</p>

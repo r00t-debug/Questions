@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import Questions from "../components/Questions"
-import RadarChart from '../components/RadarChart'
+import RadarChart from "../components/RadarChart"
+import Sidebar from "../components/Sidebar"
 
 function Dashboard() {
   const[array, setArray] = useState([
@@ -49,8 +50,21 @@ function Dashboard() {
 
   return (
     <>
-    <Questions title={"Dashboard"} arr={array} />
-    <RadarChart arr={array} />
+    <Sidebar />
+    <div
+      id="content"
+      className="bg-[#ebe9f8] h-screen ml-20 bg-waves bg-cover flex justify-center items-center"
+    >
+      <div
+        id="main"
+        className='shadow-box p-4 rounded-lg w-[90%] h-[90%] bg-light-slate backdrop-blur-xl'
+      >
+    <div className="grid grid-cols-2 h-full">
+      <Questions title={"Dashboard"} arr={array} />
+      <RadarChart arr={array} />
+    </div>
+    </div>
+    </div>
     </>
   )
 }

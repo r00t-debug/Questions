@@ -1,0 +1,63 @@
+/*
+  Common invoice styles. These styles will work in a browser or using the HTML
+  to PDF anvil endpoint.
+*/
+
+body {
+  font-size: 16px;
+}
+.invoice-info-container {
+  width: 100%;
+  border-collapse: collapse;
+}
+.header-container {
+  margin-bottom: 70px;
+}
+.invoice-info-container {
+  margin-bottom: 70px;
+  font-size: 0.875em;
+}
+.invoice-info-container td {
+  padding: 4px 0;
+}
+.client-logo {
+  text-align: right;
+}
+.title {
+  font-weight: 400;
+  font-size: 1.5em;
+  vertical-align: top;
+}
+.page-container {
+  display: none;
+}
+.styled-table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  margin-bottom: auto;
+}
+.styled-table thead tr {
+  background-color: #ddd;
+  text-align: center;
+  height: 50px;
+}
+.styled-table th,
+.styled-table td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
+  font-size: 17px;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #ddd;
+  height: 40px;
+}
+.list {
+  padding-left: 1.2rem;
+}
+.list li {
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+}

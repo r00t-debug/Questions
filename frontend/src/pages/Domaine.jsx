@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import Questions from "../components/Questions"
-import RadarChart from '../components/RadarChart'
+import RadarChart from "../components/RadarChart"
+import Sidebar from "../components/Sidebar"
 
 
 function Domaine({ arr, domaine, title }) {
@@ -27,14 +28,14 @@ function Domaine({ arr, domaine, title }) {
   }, [])
 
   // Check for min and max on input
-  function minmax(value, min, max)
-  {
-    if (parseInt(value) < min || isNaN(parseInt(value)))
-      return min
-    else if (parseInt(value) > max)
-      return max
-    else return value
-  }
+  // function minmax(value, min, max)
+  // {
+  //   if (parseInt(value) < min || isNaN(parseInt(value)))
+  //     return min
+  //   else if (parseInt(value) > max)
+  //     return max
+  //   else return value
+  // }
   
 
   const updateItem = (id, whichvalue, newvalue) => {
@@ -47,9 +48,9 @@ function Domaine({ arr, domaine, title }) {
     }
   }
   
-  const handleInput = (e) => {
+  const handleChange = (e) => {
     let name = e.target.name;
-    const value = minmax(e.target.value, 0, 5)
+    const value = e.target.value
 
     e.target.value = value
     updateItem(name,'value', value)
@@ -61,8 +62,21 @@ function Domaine({ arr, domaine, title }) {
 
   return (
     <>
-    <Questions title={title} arr={array} onInput={handleInput} />
-    <RadarChart arr={array} />
+    <Sidebar />
+    <div
+      id="content"
+      className="bg-[#ebe9f8] h-screen ml-20 bg-waves bg-cover flex justify-center items-center"
+    >
+      <div
+        id="main"
+        className='shadow-box p-4 rounded-lg w-[90%] h-[90%] bg-light-slate backdrop-blur-xl'
+      >
+    <div className="grid grid-cols-2 h-full">
+      <Questions domaine={domaine} title={title} arr={array} onChange={handleChange} />
+      <RadarChart arr={array} />
+    </div>
+    </div>
+    </div>
     </>
   )
 }

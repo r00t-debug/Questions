@@ -1,0 +1,24 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+:root {
+	tab-size: 4;
+}
+html {
+	line-height: 1.15; /* 1 */
+	-webkit-text-size-adjust: 100%; /* 2 */
+}
+body {
+	margin: 0;
+}
+body {
+	font-family:
+		'Segoe UI',
+		'Segoe UI Emoji';
+}
+b,
+strong {
+	font-weight: bolder;
+}
