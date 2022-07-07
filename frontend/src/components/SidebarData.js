@@ -9,6 +9,7 @@ import {
   FaAtlassian,
   FaBuffer,
   FaFly,
+  FaUser,
   FaGalacticSenate,
   FaRedhat,
   FaSistrix,
@@ -100,7 +101,7 @@ export const SidebarData = [
   },
   {
     title: "Ressources humaines",
-    icon: <FaFly />,
+    icon: <FaUser />,
     link: "/domaine16"
   },
   {

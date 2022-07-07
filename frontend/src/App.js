@@ -4,11 +4,13 @@ import "./App.css";
 import Dashboard from './pages/Dashboard'
 import Domaine from './pages/Domaine'
 import Domaines from './pages/Domaines'
+import Sidebar from './components/Sidebar'
 import Pdf from './pages/Pdf'
 
 function App() {
   return (
     <Router>
+      <Sidebar />
       <Routes>
         <Route path='/' element={<Dashboard />}></Route>
         {Domaines.map((domaine, index) => (

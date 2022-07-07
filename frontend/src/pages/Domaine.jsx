@@ -2,8 +2,6 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import Questions from "../components/Questions"
 import RadarChart from "../components/RadarChart"
-import Sidebar from "../components/Sidebar"
-
 
 function Domaine({ arr, domaine, title }) {
   const[array, setArray] = useState(arr)
@@ -61,8 +59,6 @@ function Domaine({ arr, domaine, title }) {
   }
 
   return (
-    <>
-    <Sidebar />
     <div
       id="content"
       className="bg-[#ebe9f8] h-screen ml-20 bg-waves bg-cover flex justify-center items-center"
@@ -77,7 +73,6 @@ function Domaine({ arr, domaine, title }) {
     </div>
     </div>
     </div>
-    </>
   )
 }
 export default Domaine

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import Questions from "../components/Questions"
 import RadarChart from "../components/RadarChart"
-import Sidebar from "../components/Sidebar"
 
 function Dashboard() {
   const[array, setArray] = useState([
@@ -49,8 +48,6 @@ function Dashboard() {
   }, [])
 
   return (
-    <>
-    <Sidebar />
     <div
       id="content"
       className="bg-[#ebe9f8] h-screen ml-20 bg-waves bg-cover flex justify-center items-center"
@@ -65,7 +62,6 @@ function Dashboard() {
     </div>
     </div>
     </div>
-    </>
   )
 }
 export default Dashboard

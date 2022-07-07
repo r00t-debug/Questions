@@ -89,15 +89,17 @@ function RadarChart({arr}) {
   ]
 
   return (
-    <div className="font-semibold px-4 border-l-[1px] border-slate-200 flex flex-col justify-center items-center">
-      <ul className="w-11/12 flex justify-between mb-2">
-        {scale.map((item, index) => (
-          <li key={index}>
-            <p className={`text-center ${item.color}`}>{item.score} {item.text}</p>
-          </li>
-        ))}
-      </ul>
+    <div id='radarChart' className='font-semibold px-4 border-l-[1px] border-slate-200 items-center flex flex-col'>
+    <ul className="flex justify-between w-full">
+      {scale.map((item, index) => (
+        <li key={index}>
+          <p className={`text-center ${item.color}`}>{item.score} {item.text}</p>
+        </li>
+      ))}
+    </ul>
+    <div className="flex justify-center items-center w-full h-full">
       <Radar data={data} options={options} />
+    </div>
     </div>
   )
 }

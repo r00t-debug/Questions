@@ -2,7 +2,7 @@ const Questions = ({ domaine, title, arr, onChange }) => {
   return (
     <div id="questions" className="px-2 text-slate-800">
       <h4 className="mb-3 font-semibold text-2xl">{domaine && domaine+". "}{title}</h4>
-      <div id="input-area" className="h-[600px] py-4 pr-4 overflow-auto scrollbar">
+      <div id="input-area" className="h-[calc(90vh-80px)] py-4 pr-4 overflow-auto scrollbar">
         {arr.map((item, index) => (
           <div key={index} className="flex items-center p-2 h-28 border-b-[1px] border-slate-200">
             <div className="w-1/12 text-xl text-slate-800">{item.name + 1}</div>

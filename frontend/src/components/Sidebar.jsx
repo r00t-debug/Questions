@@ -1,5 +1,5 @@
 import  { useState } from 'react';
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import '../App.css'
 import { SidebarData } from './SidebarData'
 import {FcMindMap} from 'react-icons/fc'
@@ -22,9 +22,9 @@ function Sidebar() {
       />
 
       <div className="flex gap-x-4 items-center">
-        <Link className="cursor-pointer duration-500 text-4xl" to="/">
+        <NavLink className="cursor-pointer duration-500 text-4xl" to="/">
           <FcMindMap />
-        </Link>
+        </NavLink>
         <h1
           className={`text-white origin-left font-mdium text-xl duration-300 ${!open && "scale-0 text-xs"}`}
         >
@@ -32,38 +32,38 @@ function Sidebar() {
         </h1>
       </div>
       <ul className="mt-6 pr-3 overflow-auto h-[calc(100vh-96px)] scrollbar">
-      <Link to={"/"}
-          className='text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 hover:bg-light-white rounded-md'
-        >
+      <NavLink to={"/"}
+        className={({ isActive }) => isActive ? "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 bg-light-white rounded-md" : "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 hover:bg-light-white rounded-md"}
+      >
           <div className="text-xl">
             <RiDashboard2Fill />
           </div>
           <span className={`${!open && 'hidden'} origin-left duration-200`}>Dashboard</span>
-        </Link>
+        </NavLink>
 
         <div className='border-t border-slate-400'></div>
 
         {SidebarData.map((val, index) => (
-          <Link key={index} to={val.link}
-            className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 hover:bg-light-white rounded-md`}
+          <NavLink key={index} to={val.link}
+            className={({ isActive }) => isActive ? "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 bg-light-white rounded-md" : "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 hover:bg-light-white rounded-md"}
           >
             <div className="text-xl">
               {val.icon}
             </div>
             <span className={`${!open && 'hidden'} origin-left duration-200`}>{val.title}</span>
-          </Link>
+          </NavLink>
         ))}
 
         <div className='border-t border-slate-400'></div>
 
-        <Link to={"/pdf"}
-          className='text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 hover:bg-light-white rounded-md'
+        <NavLink to={"/pdf"}
+          className={({ isActive }) => isActive ? "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 bg-light-white rounded-md" : "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer my-1 p-2 hover:bg-light-white rounded-md"}
         >
           <div className="text-xl">
             <AiOutlineAudit />
           </div>
           <span className={`${!open && 'hidden'} origin-left duration-200`}>Rapport d'Audit</span>
-        </Link>
+        </NavLink>
       </ul>
     </div>
   )

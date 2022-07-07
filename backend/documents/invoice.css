@@ -43,6 +43,11 @@ body {
   text-align: center;
   height: 50px;
 }
+.vertical-table th {
+  background-color: #eee;
+  text-align: center;
+  width: 1%;
+}
 .styled-table th,
 .styled-table td {
   border: 1px solid #ddd;
@@ -60,4 +65,7 @@ body {
 .list li {
   list-style-type: none;
   margin-bottom: 0.5rem;
+}
+.space {
+  margin-bottom: 70px;
 }
