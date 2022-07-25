@@ -3,6 +3,7 @@ require ('dotenv').config()
 const express = require('express')
 const pdf = require('html-pdf')
 const pdfTemplate = require('./documents')
+const path = require('path')
 
 const port = process.env.PORT || 8000
 
@@ -11,7 +12,6 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/api/questions', require('./routes/questionRoutes'))
 
 var config = {
   "format": "A4",
@@ -24,6 +24,12 @@ var config = {
   },
 };
 
+app.get('/', (req, res) => {
+  res.json("server is running")
+})
+
+app.use('/api/questions', require('./routes/questionRoutes'))
+
 app.post('/api/pdf', (req, res) => {
   pdf.create(pdfTemplate(req.body), config).toFile(`${__dirname}/audit.pdf`, (err) => {
     if(err) {
@@ -34,16 +40,18 @@ app.post('/api/pdf', (req, res) => {
   })
 })
 
-// app.post('/api/pdf', async (req, res) => {
-//   const browser = await puppeteer.launch()
-//   const page = await browser.newPage()
-//   await page.setContent(req.body)
-//   await page.pdf({ format: "a4", path: "./audit.pdf" })
-//   await browser.close()
-// })
-
 app.get('/api/pdf', (req, res) => {
   res.sendFile(`${__dirname}/audit.pdf`)
 })
+
+// Serve static assets if in production
+if(process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('frontend/build'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  })
+}
 
 app.listen(port, () => console.log(`listening on port ${port}`))
