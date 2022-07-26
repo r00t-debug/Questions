@@ -24,10 +24,6 @@ var config = {
   },
 };
 
-app.get('/', (req, res) => {
-  res.json("server is running")
-})
-
 app.use('/api/questions', require('./routes/questionRoutes'))
 
 app.post('/api/pdf', (req, res) => {
