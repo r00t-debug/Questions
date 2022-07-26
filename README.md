@@ -5,3 +5,5 @@ I built this app as part of my final year thesis. We were asked to build a web a
 ## Tools used
 
 In order to build this app, I used nodeJS with express as a backend and React as a frontend. the database I used is mySQL. the radar chart was created thanks to [chartJS](https://www.chartjs.org/)
+
+[Live view](https://isms-audit.herokuapp.com/)
