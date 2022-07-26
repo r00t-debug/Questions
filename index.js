@@ -43,7 +43,6 @@ app.get('/api/pdf', (req, res) => {
 // Serve static assets if in production
 if(process.env.NODE_ENV === 'production') {
   // Set static folder
-  console.log("prod")
   app.use(express.static(path.join(__dirname, 'client', 'build')))
 
   app.get('*', (req, res) => {
